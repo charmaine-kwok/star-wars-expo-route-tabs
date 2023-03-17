@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "splash": {
+      "image": "./assets/pngwing.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "scheme": "myapp",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "star-wars-expo-router",
+    "slug": "star-wars-expo-router",
+    "ios": {
+      "bundleIdentifier": "com.mycompany.StarWarsBarejs",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/pngwing.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#000000"
+      }
+    }
+  }
+}
