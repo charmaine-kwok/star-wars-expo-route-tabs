@@ -1,5 +1,13 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+        }
+      ]
+    ],
     "splash": {
       "image": "./assets/pngwing.png",
       "resizeMode": "contain",
@@ -19,6 +27,15 @@
         "image": "./assets/pngwing.png",
         "resizeMode": "contain",
         "backgroundColor": "#000000"
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2a287f8f-9d3d-422a-a743-51d4f48bcb0e"
       }
     }
   }

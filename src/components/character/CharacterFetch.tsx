@@ -1,21 +1,30 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
-import { useSearchCharacter } from "../../api/Hooks";
-import CharacterInfo from "./CharacterInfo";
+import { useSearchCharacter } from "~hooks/Hooks";
+import CharacterDetails from "./CharacterDetails";
+import Loading from "~components/Loading";
 
-const CharacterFetch = (props) => {
-  const { data, isFetching, isLoading } = useSearchCharacter(props.name);
+type CharacterFetchProprs = {
+  searchName: string;
+};
+
+const CharacterFetch: React.FC<CharacterFetchProprs> = (props) => {
+  console.log("In character fetch");
+  console.log(props);
+  const { data, isFetching, isLoading } = useSearchCharacter(props.searchName);
 
   if (isFetching || isLoading) {
     console.log("isFetching");
-    return (
-      <Text className="font-bold text-xl text-white italic">Loading...</Text>
-    );
+    return <Loading />;
   }
   console.log("data.results");
-  console.log(data.results);
+  console.log(data);
 
-  return <CharacterInfo name={data.results.name} item={data.results} />;
+  return (
+    <View className="my-2.5 flex-row ">
+      <CharacterDetails data={data.results[0]} />
+    </View>
+  );
 };
 
 export default CharacterFetch;

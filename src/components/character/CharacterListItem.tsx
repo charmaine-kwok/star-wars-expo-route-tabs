@@ -1,33 +1,37 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { CharacterData } from "../../api/Hooks";
 import { useRouter } from "expo-router";
 import { useAtom } from "jotai";
-import { currentDetailScreenDataAtom } from "../../atoms/currentDetailScreenData";
+import { AntDesign } from "@expo/vector-icons";
+
+import { CharacterData } from "~hooks/Hooks";
+import { currentDetailCharacterDataAtom } from "~atoms/currentData/characterData";
+import { favouriteCharacterListAtom } from "~atoms/favourite";
 
 type CharacterListItemProps = {
   item: CharacterData;
 };
 
 const CharacterListItem: React.FC<CharacterListItemProps> = (props) => {
-  const [currentDetailScreenData, setCurrentDetailScreenData] = useAtom(
-    currentDetailScreenDataAtom
+  const [currentDetailCharacterData, setCurrentDetailCharacterData] = useAtom(
+    currentDetailCharacterDataAtom
   );
-  const router = useRouter();
-  console.log("CharacterListItem");
+  const [favouriteCharacterList, setFavouriteCharacterList] = useAtom(
+    favouriteCharacterListAtom
+  );
 
+  const router = useRouter();
+
+  console.log("CharacterListItem");
   console.log(props.item);
-  // setCurrentDetailScreenData(props.item);
+  console.log("favouriteCharacterList", favouriteCharacterList);
+  const names = favouriteCharacterList.map((item) => item.name);
 
   return (
     <Pressable
       onPress={() => {
-        setCurrentDetailScreenData(props.item);
+        setCurrentDetailCharacterData(props.item);
         router.replace({
-          pathname: "/characters",
-          params: {
-            name: props.item.name,
-            // item: JSON.stringify(props.item),
-          },
+          pathname: `/home/characters/${props.item.name}`,
         });
       }}
     >
@@ -47,6 +51,36 @@ const CharacterListItem: React.FC<CharacterListItemProps> = (props) => {
             {props.item.name}
           </Text>
         </View>
+        <Pressable
+          className="ml-3"
+          onPress={() => {
+            console.log(props.item.name);
+            console.log("fav", props.item.favourite);
+            if (!props.item.favourite) {
+              props.item.favourite = !props.item.favourite;
+              setFavouriteCharacterList((favouriteCharacterList) => [
+                ...favouriteCharacterList,
+                props.item,
+              ]);
+
+              console.log("favouriteCharacterList", favouriteCharacterList);
+            } else {
+              props.item.favourite = !props.item.favourite;
+
+              setFavouriteCharacterList(
+                favouriteCharacterList.filter(
+                  (item) => item.name !== props.item.name
+                )
+              );
+            }
+          }}
+        >
+          {props.item.favourite || names.includes(props.item.name) ? (
+            <AntDesign name="heart" size={24} color="red" />
+          ) : (
+            <AntDesign name="hearto" size={24} color="red" />
+          )}
+        </Pressable>
       </View>
     </Pressable>
   );

@@ -1,27 +1,22 @@
-import { Link, useRouter } from "expo-router";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Text, View } from "react-native";
 
-export default function App({ navigation }) {
+export default function App() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <View className="bg-neutral-700 flex-1 items-center p-12">
+      <Text className=" text-xl my-4 text-white">
+        This is the Star-Wars API!
+      </Text>
       <Text
+        className="text-white text-xl"
         onPress={() => {
           router.back();
         }}
       >
-        Open settings dynamic
+        Dismiss
       </Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: "#fff",
-    alignItems: "center",
-  },
-});

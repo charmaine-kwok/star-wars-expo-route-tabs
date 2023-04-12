@@ -1,18 +1,33 @@
-import { View, StyleSheet, Text, Alert, Button, FlatList } from "react-native";
+import { View, Alert, Button, FlatList, RefreshControl } from "react-native";
 import { useRouter } from "expo-router";
+import { useState, useCallback } from "react";
 
 import CharacterListItem from "./CharacterListItem";
-import { useSearchCharacter } from "../../api/Hooks";
+import { useSearchCharacter } from "~hooks/Hooks";
+import Loading from "~components/Loading";
+import { CharacterData } from "~hooks/Hooks";
 
 type CharacterListProps = {
-  searchName: string;
+  searchName?: string;
   page: string;
+  fav?: CharacterData[];
 };
 
 const CharacterList: React.FC<CharacterListProps> = (props) => {
   const router = useRouter();
-  console.log(props);
   console.log("in Character List");
+
+  console.log(props);
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 4000);
+  }, []);
+
   const { data, isFetching, isLoading } = useSearchCharacter(
     props.searchName,
     parseInt(props.page)
@@ -20,81 +35,74 @@ const CharacterList: React.FC<CharacterListProps> = (props) => {
 
   if (isFetching || isLoading) {
     console.log("isFetching");
-    return (
-      <Text className="font-bold text-xl text-white italic">Loading...</Text>
-    );
+
+    return <Loading />;
   }
   console.log(data);
-  const createTwoButtonAlert = () =>
+
+  const createTwoButtonAlert = () => {
     Alert.alert("Error", "Please enter a valid name.", [
       { text: "OK", onPress: () => router.back, style: "cancel" },
     ]);
+    return null;
+  };
   if (data.length === 0) {
     return createTwoButtonAlert();
   }
-  if (data.next) {
-    console.log(data.next);
-  }
 
   return (
-    <>
-      <View style={styles.list}>
-        <FlatList
-          ListFooterComponent={() => (
-            <View className="flex-row justify-between space-x-16 mb-16 ">
-              {data.previous ? (
-                <Button
-                  color="white"
-                  onPress={() => {
-                    router.replace({
-                      pathname: "",
-                      params: {
-                        category: "Characters",
-                        searchName: props.searchName,
-                        page: parseInt(props.page) - 1,
-                      },
-                    });
-                  }}
-                  title="Prev"
-                />
-              ) : (
-                <View />
-              )}
-              {data.next && (
-                <Button
-                  color="white"
-                  onPress={() => {
-                    router.push({
-                      pathname: "",
-                      params: {
-                        category: "Characters",
-                        searchName: props.searchName,
-                        page: parseInt(props.page) + 1,
-                      },
-                    });
-                  }}
-                  title="Next"
-                />
-              )}
-            </View>
-          )}
-          data={data.results}
-          renderItem={({ item, index }) => <CharacterListItem item={item} />}
-          keyExtractor={(item, index) => item.name}
-        />
-      </View>
-    </>
+    <View className="flex-row flex-1 my-4 mx-4">
+      <FlatList
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => onRefresh()}
+          />
+        }
+        ListFooterComponent={() => (
+          <View className="flex-row justify-between space-x-16 mb-16 ">
+            {data.previous ? (
+              <Button
+                color="white"
+                onPress={() => {
+                  router.replace({
+                    pathname: "/home/characters/resultsList",
+                    params: {
+                      category: "Characters",
+                      searchName: props.searchName,
+                      page: parseInt(props.page) - 1,
+                    },
+                  });
+                }}
+                title="Prev"
+              />
+            ) : (
+              <View />
+            )}
+            {data.next && (
+              <Button
+                color="white"
+                onPress={() => {
+                  router.replace({
+                    pathname: "/home/characters/resultsList",
+                    params: {
+                      category: "Characters",
+                      searchName: props.searchName,
+                      page: parseInt(props.page) + 1,
+                    },
+                  });
+                }}
+                title="Next"
+              />
+            )}
+          </View>
+        )}
+        data={props.fav ? props.fav : data.results}
+        renderItem={({ item, index }) => <CharacterListItem item={item} />}
+        keyExtractor={(item, index) => item.name}
+      />
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  list: {
-    marginVertical: 10,
-    marginHorizontal: 15,
-    minHeight: 100,
-    flexDirection: "row",
-    flex: 1,
-  },
-});
 
 export default CharacterList;
