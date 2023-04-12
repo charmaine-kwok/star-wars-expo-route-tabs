@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { useAtom } from "jotai";
-import { Stack, Tabs } from "expo-router";
+import { Stack } from "expo-router";
 
-import { randomIdAtom } from "../../src/atoms/randomId";
-import MyButton from "../../src/components/MyButton";
-import getRandom from "../../src/functions/getRandom";
-import RandomCharacterInfo from "../../src/components/character/RandomCharacterInfo";
+import { randomIdAtom } from "~atoms/randomId";
+import MyButton from "~components/buttons/MyButton";
+import getRandom from "~functions/getRandom";
+import RandomCharacterInfo from "~components/character/RandomCharacterInfo";
 
 const RandomScreen: React.FC = () => {
   const [randomId, setRandomId] = useAtom(randomIdAtom);
