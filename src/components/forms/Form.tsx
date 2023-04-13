@@ -117,10 +117,30 @@ const Form: React.FC<FormProps> = (props) => {
         bgColor="black"
         fgColor="white"
         widthPerct="100%"
-        // addStyle={{ alignItems: "center" }}
+        addStyle={{ marginTop: "10%" }}
+        flexDir="column"
       />
 
-      <View style={styles.button}>
+      <CustomButton
+        onPress={() =>
+          router.replace({
+            pathname: `/home/${props.category.toLowerCase()}/resultsList`,
+            params: {
+              category: props.category,
+              searchName: searchValue,
+              page: 1,
+            },
+          })
+        }
+        text="Search"
+        bgColor="black"
+        fgColor="white"
+        widthPerct="100%"
+        addStyle={{ marginTop: "10%" }}
+        flexDir="column"
+      />
+
+      {/* <View style={styles.button}>
         <Button
           color="white"
           title="Reset"
@@ -128,9 +148,9 @@ const Form: React.FC<FormProps> = (props) => {
             setSearchValue("");
           }}
         />
-      </View>
+      </View> */}
 
-      <View style={styles.button}>
+      {/* <View style={styles.button}>
         <Button
           color="white"
           title="Search"
@@ -145,7 +165,7 @@ const Form: React.FC<FormProps> = (props) => {
             })
           }
         />
-      </View>
+      </View> */}
     </View>
   );
 };

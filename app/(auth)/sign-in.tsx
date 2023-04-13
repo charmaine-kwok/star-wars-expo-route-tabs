@@ -95,6 +95,7 @@ export default function SignIn() {
               onPress={() => handleLogin(username, password)}
               bgColor="black"
               fgColor="white"
+              flexDir="column"
             />
 
             <Text className="text-white my-2 sm:my-6">Forgot Password?</Text>
