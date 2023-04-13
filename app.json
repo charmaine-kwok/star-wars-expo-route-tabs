@@ -8,6 +8,10 @@
         }
       ]
     ],
+    "name": "Star-Wars-API",
+    "owner": "Charmaine Kwok",
+    "icon": "./assets/pngwing.png",
+    "description": "A Star-Wars-API React Native app built with Expo.",
     "splash": {
       "image": "./assets/pngwing.png",
       "resizeMode": "contain",
@@ -17,8 +21,8 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "star-wars-expo-router",
-    "slug": "star-wars-expo-router",
+
+    "slug": "Star-Wars-API",
     "ios": {
       "bundleIdentifier": "com.mycompany.StarWarsBarejs",
       "buildNumber": "1.0.0",
