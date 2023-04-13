@@ -1,3 +1,5 @@
+import { useSearchParams } from "expo-router";
+
 import CategorySearchForm from "~components/forms/CategorySearchForm";
 import {
   useSearchFilm,
@@ -5,7 +7,6 @@ import {
   useSearchSpecies,
 } from "~hooks/Hooks";
 import { StarWarAPICategory, SearchCategroyAction } from "../../types";
-import { useSearchParams } from "expo-router";
 
 const searchCategroyActions: {
   [key in StarWarAPICategory]: SearchCategroyAction;

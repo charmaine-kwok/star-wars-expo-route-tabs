@@ -1,32 +1,33 @@
 import { View } from "react-native";
 import { useSearchParams, Stack, usePathname } from "expo-router";
 import { useAtom } from "jotai";
-import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
-import FilmDetails from "~components/film/FilmDetails";
-import FilmInfo from "~components/film/FilmInfo";
 
-const FilmResultDetailScreen: React.FC = () => {
-  const [currentDetailFilmData, setCurrentDetailFilmData] = useAtom(
-    currentDetailFilmDataAtom
+import { currentDetailSpeciesDataAtom } from "~atoms/currentData/speciesData";
+import SpeciesDetails from "~components/species/SpeciesDetails";
+import SpeciesInfo from "~components/species/SpeciesInfo";
+
+const SpeciesResultDetailScreen: React.FC = () => {
+  const [currentDetailSpeciesData, setCurrentDetailSpeciesData] = useAtom(
+    currentDetailSpeciesDataAtom
   );
-  console.log("FilmResultDetailScreen");
-  console.log(currentDetailFilmData);
+  console.log("SpeciesResultDetailScreen");
+  console.log(currentDetailSpeciesData);
 
   const path = usePathname();
   const params = useSearchParams();
   console.log("params", params);
 
-  console.log("in name film");
+  console.log("in name species");
   console.log("path", path);
 
-  if (!currentDetailFilmData) {
+  if (!currentDetailSpeciesData) {
     const searchName = params.searchName as string;
 
     return (
       <>
         <Stack.Screen options={{ headerTitle: searchName }} />
         <View className="flex-1 items-center bg-neutral-700">
-          <FilmInfo searchName={searchName} />
+          <SpeciesInfo searchName={searchName} />
         </View>
       </>
     );
@@ -34,12 +35,12 @@ const FilmResultDetailScreen: React.FC = () => {
 
   return (
     <>
-      <Stack.Screen options={{ headerTitle: currentDetailFilmData.title }} />
+      <Stack.Screen options={{ headerTitle: currentDetailSpeciesData.name }} />
       <View className="flex-1 items-center bg-neutral-700">
-        <FilmDetails />
+        <SpeciesDetails />
       </View>
     </>
   );
 };
 
-export default FilmResultDetailScreen;
+export default SpeciesResultDetailScreen;

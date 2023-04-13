@@ -1,17 +1,10 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Alert,
-  Button,
-} from "react-native";
+import { Text, View, StyleSheet, FlatList, Image, Alert } from "react-native";
 import { useState, useCallback } from "react";
-import { currentDetailFilmDataAtom } from "../../atoms/currentData/filmData";
 import ReadMore from "react-native-read-more-text";
 import { useAtom } from "jotai";
 import YoutubePlayer from "react-native-youtube-iframe";
+
+import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 import { StarWarFilms, trailerLink } from "app/types";
 
 const filmTrailer: {

@@ -1,8 +1,8 @@
 import { Text, View } from "react-native";
-import DismissKeyboard from "~components/DismissKeyboard";
 import { Stack } from "expo-router";
-import titleCase from "~functions/titleCase";
 
+import DismissKeyboard from "~components/DismissKeyboard";
+import titleCase from "~functions/titleCase";
 import Form from "./Form";
 
 type SearchFormProps = {
