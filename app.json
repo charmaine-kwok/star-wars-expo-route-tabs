@@ -9,7 +9,6 @@
       ]
     ],
     "name": "Star-Wars-API",
-    "owner": "Charmaine Kwok",
     "icon": "./assets/starwars_icon.png",
     "description": "A Star-Wars-API React Native app built with Expo.",
     "splash": {

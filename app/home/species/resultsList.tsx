@@ -1,9 +1,8 @@
 import { View } from "react-native";
 import { useSearchParams, usePathname } from "expo-router";
 import { Stack } from "expo-router";
-import React from "react";
 
-import FilmList from "~components/film/FilmList";
+import SpeciesList from "~components/species/SpeciesList";
 
 const ResultListScreen: React.FC = () => {
   const params = useSearchParams();
@@ -18,7 +17,7 @@ const ResultListScreen: React.FC = () => {
     <>
       <Stack.Screen options={{ headerTitle: category }} />
       <View className="flex-1 items-center bg-neutral-700">
-        <FilmList searchName={searchName} />
+        <SpeciesList searchName={searchName} />
       </View>
     </>
   );

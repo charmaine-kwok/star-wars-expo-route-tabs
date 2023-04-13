@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   TextInput,
-  Button,
   Alert,
   FlatList,
   Pressable,
@@ -15,6 +14,7 @@ import { useAtom } from "jotai";
 
 import { currentDetailCharacterDataAtom } from "~atoms/currentData/characterData";
 import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
+import { currentDetailSpeciesDataAtom } from "~atoms/currentData/speciesData";
 import useDebounce from "~hooks/useDebounce";
 import CustomButton from "~components/buttons/CustomButton";
 
@@ -32,6 +32,9 @@ const Form: React.FC<FormProps> = (props) => {
   );
   const [currentDetailFilmData, setCurrentDetailFilmData] = useAtom(
     currentDetailFilmDataAtom
+  );
+  const [currentDetailSpeciesData, setCurrentDetailSpeciesData] = useAtom(
+    currentDetailSpeciesDataAtom
   );
   console.log(props);
   const [searchValue, setSearchValue] = useState("");
@@ -86,6 +89,7 @@ const Form: React.FC<FormProps> = (props) => {
                 onPress={() => {
                   setCurrentDetailCharacterData(null);
                   setCurrentDetailFilmData(null);
+                  setCurrentDetailSpeciesData(null);
                   console.log("item");
                   console.log("item", item);
                   router.replace({
