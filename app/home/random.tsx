@@ -34,7 +34,6 @@ const RandomScreen: React.FC = () => {
             Your character today:
           </Text>
         )}
-
         {randomId !== 0 && <RandomCharacterInfo randomNumber={randomId} />}
       </View>
     </>
