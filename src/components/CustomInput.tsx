@@ -32,6 +32,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
           placeholder={placeholder}
           secureTextEntry={password ? (hidePass ? true : false) : false}
           autoCorrect={false}
+          autoCapitalize="none"
           keyboardType="email-address"
         ></TextInput>
         <View>

@@ -1,13 +1,48 @@
-import { Text, View, StyleSheet, FlatList, Image } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Image,
+  Alert,
+  Button,
+} from "react-native";
+import { useState, useCallback } from "react";
 import { currentDetailFilmDataAtom } from "../../atoms/currentData/filmData";
 import ReadMore from "react-native-read-more-text";
 import { useAtom } from "jotai";
+import YoutubePlayer from "react-native-youtube-iframe";
+import { StarWarFilms, trailerLink } from "app/types";
+
+const filmTrailer: {
+  [key in StarWarFilms]: trailerLink;
+} = {
+  "A New Hope": "vZ734NWnAHA",
+  "The Empire Strikes Back": "JNwNXF9Y6kY",
+  "Return of the Jedi": "7L8p7_SLzvU",
+  "The Phantom Menace": "bD7bpG-zDJQ",
+  "Attack of the Clones": "gYbW1F_c9eM",
+  "Revenge of the Sith": "5UnjrG_N8hU",
+};
 
 type FilmDetailsProps = {
   data?: any;
 };
 
 const FilmDetails: React.FC<FilmDetailsProps> = (props) => {
+  const [playing, setPlaying] = useState(false);
+
+  const onStateChange = useCallback((state) => {
+    if (state === "ended") {
+      setPlaying(false);
+      Alert.alert("video has finished playing!");
+    }
+  }, []);
+
+  const togglePlaying = useCallback(() => {
+    setPlaying((prev) => !prev);
+  }, []);
+
   console.log("in film details component");
   console.log(props);
   const [currentDetailFilmData] = useAtom(currentDetailFilmDataAtom);
@@ -21,6 +56,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = (props) => {
             <Text className=" my-2 text-center font-semibold italic text-2xl text-white">
               {item.title}
             </Text>
+
             <View className="my-3 justify-center items-center">
               <Image
                 className="object-cover mb-2.5 h-[300px] w-[200px]"
@@ -29,6 +65,14 @@ const FilmDetails: React.FC<FilmDetailsProps> = (props) => {
                     item.url.split("/").slice(-2, -1)[0]
                   }.jpg`,
                 }}
+              />
+            </View>
+            <View className="mx-5 mb-4">
+              <YoutubePlayer
+                height={250}
+                play={playing}
+                videoId={filmTrailer[item.title]}
+                onChangeState={onStateChange}
               />
             </View>
             <View>
