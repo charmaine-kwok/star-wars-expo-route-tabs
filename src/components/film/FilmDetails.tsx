@@ -4,6 +4,7 @@ import ReadMore from "react-native-read-more-text";
 import { useAtom } from "jotai";
 import YoutubePlayer from "react-native-youtube-iframe";
 
+import Loading from "~components/Loading";
 import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 import { StarWarFilms, trailerLink } from "app/types";
 
@@ -24,6 +25,8 @@ type FilmDetailsProps = {
 
 const FilmDetails: React.FC<FilmDetailsProps> = (props) => {
   const [playing, setPlaying] = useState(false);
+
+  const [videoReady, setVideoReady] = useState(false);
 
   const onStateChange = useCallback((state) => {
     if (state === "ended") {
@@ -60,12 +63,20 @@ const FilmDetails: React.FC<FilmDetailsProps> = (props) => {
                 }}
               />
             </View>
-            <View className="mx-5 mb-4">
+            {/* {!videoReady && (
+              <View className="flex-row justify-center items-center">
+                <Loading />
+              </View>
+            )} */}
+            <View className="mx-5 h-[250px] justify-center items-center">
+              {!videoReady && <Loading />}
               <YoutubePlayer
                 height={250}
+                width={400}
                 play={playing}
                 videoId={filmTrailer[item.title]}
                 onChangeState={onStateChange}
+                onReady={() => setVideoReady(true)}
               />
             </View>
             <View>

@@ -17,7 +17,7 @@ const ResultListScreen: React.FC = () => {
 
   return (
     <>
-      <Stack.Screen options={{ headerTitle: category }} />
+      {/* <Stack.Screen options={{ headerTitle: category }} /> */}
       <View className="flex-1 items-center bg-neutral-700">
         <CharacterList searchName={searchName} page={page} />
       </View>

@@ -1,8 +1,11 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import { currentDetailFilmDataAtom } from "../../atoms/currentData/filmData";
 import { useAtom } from "jotai";
-import { FilmDataProps } from "../../atoms/currentData/filmData";
+
+import {
+  FilmDataProps,
+  currentDetailFilmDataAtom,
+} from "~atoms/currentData/filmData";
 
 type FilmListItemProps = {
   item: FilmDataProps;
@@ -21,7 +24,7 @@ const FilmListItem: React.FC<FilmListItemProps> = (props) => {
       onPress={() => {
         setCurrentDetailFilmData(props.item);
 
-        router.replace({
+        router.push({
           pathname: `/home/films/${props.item.title}`,
         });
       }}

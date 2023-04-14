@@ -14,7 +14,7 @@ const SearchSelectCategory: React.FC = () => {
   const onSetSearchType = (name: string) => {
     const lowerName = name.toLowerCase();
     console.log("lowername", lowerName);
-    router.replace({
+    router.push({
       pathname: "/home/search/SearchInputWithType",
       params: {
         category: lowerName,

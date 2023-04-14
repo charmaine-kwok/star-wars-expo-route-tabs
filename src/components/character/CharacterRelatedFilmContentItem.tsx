@@ -23,7 +23,7 @@ const CharacterRelatedFilmContentItem: React.FC<
     <Pressable
       onPress={() => {
         setCurrentDetailFilmData(null);
-        router.replace({
+        router.push({
           pathname: `/home/films/${props.item.filmTitle}`,
           params: {
             searchName: props.item.filmTitle,
