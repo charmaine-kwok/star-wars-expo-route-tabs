@@ -24,7 +24,7 @@ const SpeciesListItem: React.FC<SpeciesListItemProps> = (props) => {
       onPress={() => {
         setCurrentDetailSpeciesData(props.item);
 
-        router.replace({
+        router.push({
           pathname: `/home/species/${props.item.name}`,
         });
       }}

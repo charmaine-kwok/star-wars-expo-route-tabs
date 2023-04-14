@@ -2,14 +2,12 @@ import { Stack } from "expo-router";
 
 export default function Layout() {
   return (
-    <Stack
-      screenOptions={{
-        headerBackTitleVisible: true,
-        headerBackTitle: "Something",
-      }}
-    >
+    <Stack>
       <Stack.Screen name="[name]" />
-      <Stack.Screen name="resultsList" />
+      <Stack.Screen
+        name="resultsList"
+        options={{ headerTitle: "Characters" }}
+      />
     </Stack>
   );
 }

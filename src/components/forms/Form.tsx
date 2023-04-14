@@ -127,7 +127,7 @@ const Form: React.FC<FormProps> = (props) => {
 
       <CustomButton
         onPress={() =>
-          router.replace({
+          router.push({
             pathname: `/home/${props.category.toLowerCase()}/resultsList`,
             params: {
               category: props.category,

@@ -16,7 +16,7 @@ const ResultListScreen: React.FC = () => {
   const searchName = params.searchName as string;
   return (
     <>
-      <Stack.Screen options={{ headerTitle: category }} />
+      {/* <Stack.Screen options={{ headerTitle: category }} /> */}
       <View className="flex-1 items-center bg-neutral-700">
         <FilmList searchName={searchName} />
       </View>
