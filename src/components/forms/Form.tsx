@@ -15,6 +15,8 @@ import { useAtom } from "jotai";
 import { currentDetailCharacterDataAtom } from "~atoms/currentData/characterData";
 import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 import { currentDetailSpeciesDataAtom } from "~atoms/currentData/speciesData";
+import { currentDetailStarshipDataAtom } from "~atoms/currentData/starshipData";
+import { currentDetailVehicleDataAtom } from "~atoms/currentData/vehicleData";
 import useDebounce from "~hooks/useDebounce";
 import CustomButton from "~components/buttons/CustomButton";
 
@@ -35,6 +37,12 @@ const Form: React.FC<FormProps> = (props) => {
   );
   const [currentDetailSpeciesData, setCurrentDetailSpeciesData] = useAtom(
     currentDetailSpeciesDataAtom
+  );
+  const [currentDetailStarshipData, setCurrentDetailStarshipData] = useAtom(
+    currentDetailStarshipDataAtom
+  );
+  const [currentDetailVehicleData, setCurrentDetailVehicleData] = useAtom(
+    currentDetailVehicleDataAtom
   );
   console.log(props);
   const [searchValue, setSearchValue] = useState("");
@@ -90,6 +98,8 @@ const Form: React.FC<FormProps> = (props) => {
                   setCurrentDetailCharacterData(null);
                   setCurrentDetailFilmData(null);
                   setCurrentDetailSpeciesData(null);
+                  setCurrentDetailStarshipData(null);
+                  setCurrentDetailVehicleData(null);
                   console.log("item");
                   console.log("item", item);
                   router.replace({

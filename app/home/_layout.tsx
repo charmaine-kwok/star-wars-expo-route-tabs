@@ -95,6 +95,22 @@ export default function Layout1() {
       />
 
       <Tabs.Screen
+        name="starships"
+        options={{
+          href: null,
+          headerShown: false,
+        }}
+      />
+
+      <Tabs.Screen
+        name="vehicles"
+        options={{
+          href: null,
+          headerShown: false,
+        }}
+      />
+
+      <Tabs.Screen
         name="BarCodeScanner"
         options={{
           href: null,

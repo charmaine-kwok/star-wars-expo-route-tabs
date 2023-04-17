@@ -1,10 +1,9 @@
 import { View } from "react-native";
 import { useSearchParams, usePathname } from "expo-router";
-// import { Stack } from "expo-router";
 
-import SpeciesList from "~components/species/SpeciesList";
+import StarshipList from "~components/starship/StarshipList";
 
-const ResultListScreen: React.FC = () => {
+const StarshipResultListScreen: React.FC = () => {
   const params = useSearchParams();
   const path = usePathname();
   console.log("in result Screen");
@@ -17,10 +16,10 @@ const ResultListScreen: React.FC = () => {
     <>
       {/* <Stack.Screen options={{ headerTitle: category }} /> */}
       <View className="flex-1 items-center bg-neutral-700">
-        <SpeciesList searchName={searchName} />
+        <StarshipList searchName={searchName} />
       </View>
     </>
   );
 };
 
-export default ResultListScreen;
+export default StarshipResultListScreen;
