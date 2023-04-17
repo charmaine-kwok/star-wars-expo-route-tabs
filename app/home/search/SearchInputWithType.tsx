@@ -7,6 +7,7 @@ import {
   useSearchSpecies,
   useSearchStarships,
   useSearchVehicles,
+  useSearchPlanets,
 } from "~hooks/Hooks";
 import { StarWarAPICategory, SearchCategroyAction } from "../../types";
 
@@ -41,7 +42,7 @@ const searchCategroyActions: {
   },
   planets: {
     searchType: "name",
-    queryFn: useSearchCharacter,
+    queryFn: useSearchPlanets,
     placeholder: "Alderaan",
   },
 };
