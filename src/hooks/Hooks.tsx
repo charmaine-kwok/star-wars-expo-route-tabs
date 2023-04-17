@@ -87,9 +87,33 @@ export const getSearchFilmById = async (item) => {
 };
 
 // Search by species name
-export const useSearchSpecies = (name) => {
+export const useSearchSpecies = (name: string) => {
   return useQuery(["getSearchSpecies", name], async () => {
     const SWapi = `https://swapi.dev/api/species/?search=${name}`;
+    console.log(SWapi);
+
+    const response = await axios.get(SWapi);
+    console.log("response.data", response.data);
+    return response.data;
+  });
+};
+
+// Search by species name
+export const useSearchStarships = (name: string) => {
+  return useQuery(["getSearchSpecies", name], async () => {
+    const SWapi = `https://swapi.dev/api/starships/?search=${name}`;
+    console.log(SWapi);
+
+    const response = await axios.get(SWapi);
+    console.log("response.data", response.data);
+    return response.data;
+  });
+};
+
+// Search by vehicle name
+export const useSearchVehicles = (name: string) => {
+  return useQuery(["getSearchSpecies", name], async () => {
+    const SWapi = `https://swapi.dev/api/vehicles/?search=${name}`;
     console.log(SWapi);
 
     const response = await axios.get(SWapi);

@@ -2,6 +2,7 @@ import { StyleSheet, View, Image, Pressable } from "react-native";
 import { Text } from "@rneui/themed";
 import { useRouter } from "expo-router";
 import { useAtom } from "jotai";
+
 import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 
 type CharacterRelatedFilmContentItemProps = {

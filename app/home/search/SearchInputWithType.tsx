@@ -5,6 +5,8 @@ import {
   useSearchFilm,
   useSearchCharacter,
   useSearchSpecies,
+  useSearchStarships,
+  useSearchVehicles,
 } from "~hooks/Hooks";
 import { StarWarAPICategory, SearchCategroyAction } from "../../types";
 
@@ -29,12 +31,12 @@ const searchCategroyActions: {
   },
   starships: {
     searchType: "name",
-    queryFn: useSearchCharacter,
+    queryFn: useSearchStarships,
     placeholder: "Death Star",
   },
   vehicles: {
     searchType: "name",
-    queryFn: useSearchCharacter,
+    queryFn: useSearchVehicles,
     placeholder: "Sand Crawler",
   },
   planets: {

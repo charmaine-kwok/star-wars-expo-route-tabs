@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { useSearchParams, Stack, usePathname } from "expo-router";
 import { useAtom } from "jotai";
+
 import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 import FilmDetails from "~components/film/FilmDetails";
 import FilmInfo from "~components/film/FilmInfo";

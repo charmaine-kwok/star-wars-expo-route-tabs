@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-import { CharacterData } from "../../hooks/Hooks";
+import { CharacterData } from "~hooks/Hooks";
 
 export const currentDetailCharacterDataAtom = atom<CharacterData>({
   name: "",
@@ -12,4 +12,5 @@ export const currentDetailCharacterDataAtom = atom<CharacterData>({
   hair_color: "",
   skin_color: "",
   films: [""],
+  favourite: false,
 });
