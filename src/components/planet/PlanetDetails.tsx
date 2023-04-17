@@ -2,24 +2,24 @@ import { Text, View, FlatList, Image, Alert } from "react-native";
 import { useAtom } from "jotai";
 
 import {
-  currentDetailStarshipDataAtom,
-  StarshipDataProps,
-} from "~atoms/currentData/starshipData";
+  currentDetailPlanetDataAtom,
+  PlanetDataProps,
+} from "~atoms/currentData/planetData";
 
-type StarshipDetailsProps = {
-  data?: StarshipDataProps;
+type PlanetDetailsProps = {
+  data?: PlanetDataProps;
 };
 
-const StarshipDetails: React.FC<StarshipDetailsProps> = (props) => {
-  console.log("in Starship details component");
+const PlanetDetails: React.FC<PlanetDetailsProps> = (props) => {
+  console.log("in Planet details component");
   console.log(props);
-  const [currentDetailStarshipData] = useAtom(currentDetailStarshipDataAtom);
-  console.log(currentDetailStarshipData);
+  const [currentDetailPlanetData] = useAtom(currentDetailPlanetDataAtom);
+  console.log(currentDetailPlanetData);
   return (
     <View className="flex-1 my-2.5 min-h-full flex-row bg-neutral-700">
       <FlatList
         data={
-          currentDetailStarshipData ? [currentDetailStarshipData] : [props.data]
+          currentDetailPlanetData ? [currentDetailPlanetData] : [props.data]
         }
         renderItem={({ item, index }) => (
           <View>
@@ -31,7 +31,7 @@ const StarshipDetails: React.FC<StarshipDetailsProps> = (props) => {
               <Image
                 className="object-cover mb-2.5 h-[300px] w-[200px]"
                 source={{
-                  uri: `https://starwars-visualguide.com/assets/img/starships/${
+                  uri: `https://starwars-visualguide.com/assets/img/planets/${
                     item.url.split("/").slice(-2, -1)[0]
                   }.jpg`,
                 }}
@@ -42,23 +42,19 @@ const StarshipDetails: React.FC<StarshipDetailsProps> = (props) => {
               <Text className="ml-16 text-lg text-white mr-2">
                 Name: {item.name}
                 {"\n"}
-                Model: {item.model}
+                Rotation Period: {item.rotation_period}
                 {"\n"}
-                Manufacturer: {item.manufacturer}
+                Orbital Period: {item.orbital_period}
                 {"\n"}
-                Cost in credits: {item.cost_in_credits}
+                Diameter: {item.diameter}
                 {"\n"}
-                Length: {item.length}
+                Climate: {item.climate}
                 {"\n"}
-                Max Atmosphering Speed: {item.max_atmosphering_speed}
+                Diameter: {item.diameter}
                 {"\n"}
-                Crew: {item.crew}
+                Terrain: {item.terrain}
                 {"\n"}
-                Passangers: {item.passengers}
-                {"\n"}
-                Cargo Capacity: {item.cargo_capacity}
-                {"\n"}
-                Consumables: {item.consumables}
+                Population: {item.population}
               </Text>
             </View>
           </View>
@@ -69,4 +65,4 @@ const StarshipDetails: React.FC<StarshipDetailsProps> = (props) => {
   );
 };
 
-export default StarshipDetails;
+export default PlanetDetails;

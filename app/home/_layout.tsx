@@ -111,6 +111,14 @@ export default function Layout1() {
       />
 
       <Tabs.Screen
+        name="planets"
+        options={{
+          href: null,
+          headerShown: false,
+        }}
+      />
+
+      <Tabs.Screen
         name="BarCodeScanner"
         options={{
           href: null,

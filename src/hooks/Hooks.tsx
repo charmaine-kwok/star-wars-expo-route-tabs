@@ -121,3 +121,15 @@ export const useSearchVehicles = (name: string) => {
     return response.data;
   });
 };
+
+// Search by vehicle name
+export const useSearchPlanets = (name: string) => {
+  return useQuery(["getSearchSpecies", name], async () => {
+    const SWapi = `https://swapi.dev/api/planets/?search=${name}`;
+    console.log(SWapi);
+
+    const response = await axios.get(SWapi);
+    console.log("response.data", response.data);
+    return response.data;
+  });
+};

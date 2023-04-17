@@ -17,6 +17,7 @@ import { currentDetailFilmDataAtom } from "~atoms/currentData/filmData";
 import { currentDetailSpeciesDataAtom } from "~atoms/currentData/speciesData";
 import { currentDetailStarshipDataAtom } from "~atoms/currentData/starshipData";
 import { currentDetailVehicleDataAtom } from "~atoms/currentData/vehicleData";
+import { currentDetailPlanetDataAtom } from "~atoms/currentData/planetData";
 import useDebounce from "~hooks/useDebounce";
 import CustomButton from "~components/buttons/CustomButton";
 
@@ -43,6 +44,9 @@ const Form: React.FC<FormProps> = (props) => {
   );
   const [currentDetailVehicleData, setCurrentDetailVehicleData] = useAtom(
     currentDetailVehicleDataAtom
+  );
+  const [currentDetailPlanetData, setCurrentDetailPlanetData] = useAtom(
+    currentDetailPlanetDataAtom
   );
   console.log(props);
   const [searchValue, setSearchValue] = useState("");
@@ -100,6 +104,7 @@ const Form: React.FC<FormProps> = (props) => {
                   setCurrentDetailSpeciesData(null);
                   setCurrentDetailStarshipData(null);
                   setCurrentDetailVehicleData(null);
+                  setCurrentDetailPlanetData(null);
                   console.log("item");
                   console.log("item", item);
                   router.replace({
@@ -153,33 +158,6 @@ const Form: React.FC<FormProps> = (props) => {
         addStyle={{ marginTop: "10%" }}
         flexDir="column"
       />
-
-      {/* <View style={styles.button}>
-        <Button
-          color="white"
-          title="Reset"
-          onPress={() => {
-            setSearchValue("");
-          }}
-        />
-      </View> */}
-
-      {/* <View style={styles.button}>
-        <Button
-          color="white"
-          title="Search"
-          onPress={() =>
-            router.replace({
-              pathname: `/home/${props.category.toLowerCase()}/resultsList`,
-              params: {
-                category: props.category,
-                searchName: searchValue,
-                page: 1,
-              },
-            })
-          }
-        />
-      </View> */}
     </View>
   );
 };
