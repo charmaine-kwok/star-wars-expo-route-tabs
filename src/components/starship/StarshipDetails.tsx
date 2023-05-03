@@ -39,7 +39,7 @@ const StarshipDetails: React.FC<StarshipDetailsProps> = (props) => {
             </View>
 
             <View>
-              <Text className="ml-16 text-lg text-white mr-2">
+              <Text className="ml-16 text-lg text-white mr-2 mb-8">
                 Name: {item.name}
                 {"\n"}
                 Model: {item.model}
