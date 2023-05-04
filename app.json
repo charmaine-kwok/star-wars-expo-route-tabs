@@ -9,7 +9,7 @@
       ]
     ],
     "name": "Star-Wars-API",
-    "icon": "./assets/starwars_icon.png",
+    "icon": "./assets/star-wars-icon.png",
     "description": "A Star-Wars-API React Native app built with Expo.",
     "splash": {
       "image": "./assets/pngwing.png",
@@ -20,7 +20,6 @@
     "web": {
       "bundler": "metro"
     },
-
     "slug": "Star-Wars-API",
     "ios": {
       "bundleIdentifier": "com.mycompany.StarWarsBarejs",
@@ -36,10 +35,24 @@
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
       }
     },
+
     "extra": {
       "eas": {
-        "projectId": "2a287f8f-9d3d-422a-a743-51d4f48bcb0e"
+        "projectId": "097a7657-b3f5-4eca-9c41-0a3f34f1932a"
       }
+    },
+    "android": {
+      "package": "com.starwarsapi",
+      "splash": {
+        "image": "./assets/pngwing.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#000000"
+      },
+      "adaptiveIcon": {
+        "backgroundColor": "#fff",
+        "foregroundImage": "./assets/BB8.png"
+      },
+      "icon": "./assets/BB8.png"
     }
   }
 }

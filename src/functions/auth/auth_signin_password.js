@@ -9,8 +9,6 @@ export const handleLogin = (username, password) => {
       // Signed in
       const user = userCredential.user;
       console.log("signed in");
-
-      // ...
     })
     .catch((error) => {
       console.log("Invalid username or password");
