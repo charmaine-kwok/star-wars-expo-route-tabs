@@ -65,7 +65,7 @@ export default function SignIn() {
         {orientation === 1 ? (
           <View className="items-center bg-neutral-700 flex-1 ">
             <Image
-              className="w-[250px] sm:w-[300px] h-[15%] mt-[15%] sm:mt-[25%] mb-[5%] sm:mb-[15%]"
+              className="w-[250px] sm:w-[300px] h-[15%] mt-[25%] sm:mt-[30%] mb-[10%] sm:mb-[15%]"
               resizeMode="contain"
               source={require("../../assets/pngwing.png")}
             ></Image>

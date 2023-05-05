@@ -1,6 +1,7 @@
 {
   "expo": {
     "plugins": [
+      "@react-native-firebase/app",
       [
         "expo-barcode-scanner",
         {
@@ -35,7 +36,6 @@
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
       }
     },
-
     "extra": {
       "eas": {
         "projectId": "097a7657-b3f5-4eca-9c41-0a3f34f1932a"
@@ -52,7 +52,16 @@
         "backgroundColor": "#fff",
         "foregroundImage": "./assets/BB8.png"
       },
-      "icon": "./assets/BB8.png"
+      "icon": "./assets/BB8.png",
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/097a7657-b3f5-4eca-9c41-0a3f34f1932a"
     }
   }
 }
